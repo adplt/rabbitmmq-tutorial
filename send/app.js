@@ -15,7 +15,6 @@ amqp.connect('amqp://localhost', function(err, conn) {
 
     ch.assertExchange(exchange, 'direct', { durable: false });
     ch.assertQueue(queue, { durable: false });
-    ch.bindQueue(queue, exchange, key); // for binding key from exchange to queue
     ch.publish(exchange, key, Buffer.from(JSON.stringify(message)));
     console.log('Message was sent');
   });
